@@ -1,8 +1,23 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const Users = require('../users/users-model');
 
 router.post('/register', (req, res) => {
+  const credentials = req.body;
 
+  // hash the password
+  const hash = bcrypt.hashSync(credentials.password, 14);
+
+  // override the plain text password with the hash
+  credentials.password = hash;
+
+  Users.add(credentials)
+    .then(saved => {
+      res.status(201).json(saved);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
 router.post('/login', (req, res) => {
