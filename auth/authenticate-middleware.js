@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
 
   if (authorization) {
 
-    jsonwebtoken.verify(authorization, secret, function (error, decodedToken) {
+    jsonwebtoken.verify(authorization, secret.jwtSecret, function (error, decodedToken) {
       if (error) {
         res.status(401).json({ message: "Invalid Token" });
       } else {
