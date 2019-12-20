@@ -1,7 +1,8 @@
 const jsonwebtoken = require('jsonwebtoken');
 const secrets = require('./secrets');
 
-function generateToken(user) {
+module.exports = (user) => {
+
     const payload = {
         subject: user.id,
         username: user.username
