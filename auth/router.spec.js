@@ -3,7 +3,7 @@ const server = require('../api/server');
 
 describe('when users register', () => {
     it('status code should be 201', async () => {
-        const res = await request(server).post('/api/auth/register')
+        const res = await request(server).post('/api/register')
             .send({
                 "username": "Brad3",
                 "password": "test"
@@ -12,7 +12,7 @@ describe('when users register', () => {
     });
 
     it('response should be JSON', async () => {
-        const res = await request(server).post('/api/auth/register')
+        const res = await request(server).post('/api/register')
             .send({
                 "username": "Brad",
                 "password": "test"
@@ -23,7 +23,7 @@ describe('when users register', () => {
 
 describe('when users login', () => {
     it('status code should be 200', async () => {
-        const res = await request(server).post('/api/auth/login')
+        const res = await request(server).post('/api/login')
             .send({
                 "username": "test",
                 "password": "test"
@@ -32,7 +32,7 @@ describe('when users login', () => {
     });
 
     it('response should be JSON', async () => {
-        const res = await request(server).post('/api/auth/login')
+        const res = await request(server).post('/api/login')
             .send({
                 "username": "test",
                 "password": "test"
