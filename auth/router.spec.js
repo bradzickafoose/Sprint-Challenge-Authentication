@@ -1,12 +1,11 @@
 const request = require('supertest');
 const server = require('../api/server');
 
-console.log(process.env.DB_ENV);
 describe('when users register', () => {
     it('status code should be 201', async () => {
         const res = await request(server).post('/api/auth/register')
             .send({
-                "username": "test",
+                "username": "Brad3",
                 "password": "test"
             })
         expect(res.statusCode).toEqual(201);
@@ -15,7 +14,7 @@ describe('when users register', () => {
     it('response should be JSON', async () => {
         const res = await request(server).post('/api/auth/register')
             .send({
-                "username": "test",
+                "username": "Brad",
                 "password": "test"
             })
         expect(res.type).toMatch(/json/i);
